@@ -1,13 +1,12 @@
 #include "Apotheke.h"
-
+#include "Medikament.cpp"
 #include <vector>
-using namespace std;
 
-//template <class Medikament>
+using namespace std;
 
 class Apotheke {
 private:
-	//vector<Medikament> Medlist;
+	vector<Medikament> Medlist;
 public:
 	Apotheke();
 	~Apotheke();

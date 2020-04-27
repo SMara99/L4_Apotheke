@@ -1,4 +1,5 @@
 #pragma once
+using namespace std;
 
 Medikament::Medikament() {
 	Name = "";
@@ -8,10 +9,10 @@ Medikament::Medikament() {
 };
 
 Medikament::Medikament(string new_name, double new_konz, int new_menge, double new_preis) {
-	Name = new_name;
-	Konzentration = new_konz;
-	Menge = new_menge;
-	Preis = new_preis;
+	this->Name = new_name;
+	this->Konzentration = new_konz;
+	this->Menge = new_menge;
+	this->Preis = new_preis;
 };
 
 Medikament::~Medikament() {
@@ -20,22 +21,22 @@ Medikament::~Medikament() {
 
 string Medikament::set_name(string new_name) {
 	//setter name
-	Name = new_name;
+	this->Name = new_name;
 };
 
 double Medikament::set_konz(double new_konz) {
 	//setter konzentration
-	Konzentration = new_konz;
+	this->Konzentration = new_konz;
 };
 
 int Medikament::set_menge(int new_menge) {
 	//setter menge
-	Menge = new_menge;
+	this->Menge = new_menge;
 };
 
 double Medikament::set_preis(double new_preis) {
 	//setter preis
-	Preis = new_preis;
+	this->Preis = new_preis;
 }
 
 string Medikament::get_name() {
@@ -53,3 +54,4 @@ int Medikament::get_menge() {
 double Medikament::get_preis() {
 	return this->Preis;
 };
+

@@ -10,10 +10,12 @@ private:
 public:
 	Apotheke();
 	~Apotheke();
+	vector<Medikament>* get_Medlist();
+
 	//1
-	void addMed(); //hinzufugen
-	void delMed(); //loschen
-	void aktMed(); //aktualisieren
+	void addMed(Medikament new_med); //hinzufugen
+	void delMed(Medikament med); //loschen
+	void aktMed(Medikament old_med, Medikament akt_med); //aktualisieren
 	//2
 	void showMed(); //zeigen Med oder alle andere in ABC Reihenfolge
 	//3

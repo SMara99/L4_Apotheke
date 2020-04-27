@@ -138,10 +138,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Apotheke.h" />
     <ClInclude Include="Medikament.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Apotheke.cpp" />
     <ClCompile Include="Medikament.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

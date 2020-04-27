@@ -2,14 +2,14 @@
 
 Medikament::Medikament() {
 	//constructor ohne datentyp
-	*Name = '\0';
+	Name = "";
 	Konzentration = 0;
 	Menge = 0;
 	Preis = 0;
 };
 
-Medikament::Medikament(char *new_name, double new_konz, int new_menge, double new_preis) {
-	*Name = new_name;
+Medikament::Medikament(string new_name, double new_konz, int new_menge, double new_preis) {
+	Name = new_name;
 	Konzentration = new_konz;
 	Menge = new_menge;
 	Preis = new_preis;
@@ -19,9 +19,9 @@ Medikament::~Medikament() {
 	//destructor
 };
 
-char Medikament::set_name(char *new_name) {
+string Medikament::set_name(string new_name) {
 	//setter name
-	*Name = new_name;
+	Name = new_name;
 };
 
 double Medikament::set_konz(double new_konz) {
@@ -39,6 +39,18 @@ double Medikament::set_preis(double new_preis) {
 	Preis = new_preis;
 }
 
-char Medikament::get_name() {
+string Medikament::get_name() {
 	return this->Name;
+};
+
+double Medikament::get_konz() {
+	return this->Konzentration;
+};
+
+int Medikament::get_menge() {
+	return this->Menge;
+};
+
+double Medikament::get_preis() {
+	return this->Preis;
 };

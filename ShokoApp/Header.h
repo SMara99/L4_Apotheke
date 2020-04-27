@@ -3,11 +3,11 @@
 #include <vector>
 using namespace std;
 
-template <class Medikamente>
+template <class Medikament>
 
 class Apotheke {
 private:
-	vector<Medikamente> Medlist;
+	vector<Medikament> Medlist;
 public:
 
 };

@@ -1,7 +1,6 @@
 #pragma once
 
 Medikament::Medikament() {
-	//constructor ohne datentyp
 	Name = "";
 	Konzentration = 0;
 	Menge = 0;

@@ -139,11 +139,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Apotheke.h" />
+    <ClInclude Include="Medcontrol.h" />
     <ClInclude Include="Medikament.h" />
     <ClInclude Include="MedRepo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Apotheke.cpp" />
+    <ClCompile Include="Medcontrol.cpp" />
     <ClCompile Include="Medikament.cpp" />
     <ClCompile Include="MedRepo.cpp" />
   </ItemGroup>

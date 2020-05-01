@@ -19,7 +19,7 @@ public:
 	//2
 	void showMed(string name); 
 	//3
-	void knappMed(); //weniger als cin<<x
+	void knappMed(int menge); //weniger als cin<<x
 	//4
 	void preisMed(); //nach Preis gruppiert
 	//5

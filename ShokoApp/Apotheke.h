@@ -94,7 +94,7 @@ void Apotheke::showMed(string name) {
 	}
 };
 
-void Apotheke::knappMed() {
+void Apotheke::knappMed(int menge) {
 
 };
 

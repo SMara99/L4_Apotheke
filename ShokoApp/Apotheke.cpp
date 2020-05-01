@@ -17,7 +17,7 @@ public:
 	void delMed(Medikament med); //loschen
 	void aktMed(Medikament old_med, Medikament akt_med); //aktualisieren
 	//2
-	void showMed(); //zeigen Med oder alle andere in ABC Reihenfolge
+	void showMed(string name); //zeigen Med oder alle andere in ABC Reihenfolge
 	//3
 	void knappMed(); //weniger als cin<<x
 	//4

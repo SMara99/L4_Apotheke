@@ -14,11 +14,15 @@ vector<Medikament>* Apotheke::get_Medlist() {
 };
 
 void Apotheke::addMed(Medikament new_med) {
+	//Medikamente einfugen, oder ihre Menge aktualisieren wenn sie schon existieren
+
 	int temp = -1;
+
 	for (int i = 0; i < Medlist.size(); i++) {
 		if (Medlist[i].get_name() == new_med.get_name() && Medlist[i].get_konz() == new_med.get_konz()) 
 			temp = i;
 	};
+
 	if (temp = -1)
 		this->Medlist.push_back(new_med);
 	else
@@ -26,11 +30,15 @@ void Apotheke::addMed(Medikament new_med) {
 };
 
 void Apotheke::delMed(Medikament med) {
+	//Medikamente aus der Liste loschen
+
 	int temp = -1;
+
 	for (int i = 0; i < Medlist.size(); i++) {
 		if (Medlist[i].get_name() == med.get_name() && Medlist[i].get_konz() == med.get_konz())
 			temp = i;
 	};
+
 	if (temp > -1)
 		this->Medlist.erase(this->Medlist.begin() + temp);
 	else
@@ -38,12 +46,16 @@ void Apotheke::delMed(Medikament med) {
 };
 
 void Apotheke::aktMed(Medikament old_med, Medikament akt_med) {
+	//Medikamente aktualisieren
+
 	int temp = -1;
+
 	for (int i = 0; i < Medlist.size(); i++) {
 		if (Medlist[i].get_name() == old_med.get_name() && Medlist[i].get_konz() == old_med.get_konz() &&
 			Medlist[i].get_menge() == old_med.get_menge() && Medlist[i].get_preis() == old_med.get_preis())
 			temp = i;
 	};
+
 	if (temp == -1)
 		cout << "Dieser Medikament war nicht auf der Liste";
 	else {
@@ -55,6 +67,9 @@ void Apotheke::aktMed(Medikament old_med, Medikament akt_med) {
 };
 
 void Apotheke::showMed(string name) {
+	//Alle Medikamente die der string "name" enthalten werden gezeigt 
+	//oder wenn "name" lehr ist, werden alle andere Medikamente, 
+	//in Reihenfolge, nach ihren Namen gegeben
 
 	vector<Medikament> cu_string, fara_string;
 

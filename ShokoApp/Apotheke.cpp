@@ -13,11 +13,11 @@ public:
 	vector<Medikament>* get_Medlist();
 
 	//1
-	void addMed(Medikament new_med); //hinzufugen
-	void delMed(Medikament med); //loschen
-	void aktMed(Medikament old_med, Medikament akt_med); //aktualisieren
+	void addMed(Medikament new_med); 
+	void delMed(Medikament med); 
+	void aktMed(Medikament old_med, Medikament akt_med); 
 	//2
-	void showMed(string name); //zeigen Med oder alle andere in ABC Reihenfolge
+	void showMed(string name); 
 	//3
 	void knappMed(); //weniger als cin<<x
 	//4

@@ -35,22 +35,32 @@ void Controller::find(string target)
 
 void Controller::lower()
 {
-	int tval,laux = 0; //target value,length of new array
+	int laux = 0; //target value,length of new array
+	string tval;
 	Medikament* aux; 
 	aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
 	cin >> tval;
-	for (int i = 0; i < mr.len; i++)
-	{
-		if (mr.liste[i].get_menge == tval)
+	//if the string is empty the original array will be displayed
+	if (tval == "")
+		for (int j = 0; j < mr.len; j++)
 		{
-			aux[i] = mr.liste[i];
-			laux++;
+			cout << mr.liste[j].get_name() << mr.liste[j].get_konz() << mr.liste[j].get_menge() << mr.liste[j].get_preis() << endl;
 		}
-	}
-
-	for (int j = 0; j < laux; j++)
+	else
 	{
-		cout << aux[j].get_name() << aux[j].get_konz() << aux[j].get_menge() << aux[j].get_preis() << endl;
+		for (int i = 0; i < mr.len; i++)
+		{
+			if (mr.liste[i].get_menge == tval)
+			{
+				aux[i] = mr.liste[i];
+				laux++;
+			}
+		}
+
+		for (int j = 0; j < laux; j++)
+		{
+			cout << aux[j].get_name() << aux[j].get_konz() << aux[j].get_menge() << aux[j].get_preis() << endl;
+		}
 	}
 }
 

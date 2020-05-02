@@ -1,8 +1,9 @@
 #include<iostream>
 #include<string>
 #include<vector>
-#include"MedRepo.h"
+#include "MedRepo.h"
 #include "Medikament.h"
+#include "Medcontrol.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ Medikament Medrepo::add(Medikament m)
 
 	for (int i = 0; i < len; i++)
 	{
-		if (liste[i].get_konz == m.get_konz && liste[i].get_name == m.get_name)
+		if (liste[i].get_konz() == m.get_konz() && liste[i].get_name() == m.get_name())
 		{
 			liste[i] = m;
 			return liste[i];
@@ -51,13 +52,13 @@ Medikament Medrepo::update(string name, double konz, Medikament newmed)
 		if (liste[i].get_konz == konz && liste[i].get_name == name)
 		{
 			liste[i] = newmed;
-			return liste[i];
+			return liste;
 		}
 	}
-	return ("Target does not exist");
+	return (newmed);
 }
 
-Medikament Medrepo::remove(string name, double konz)
+string Medrepo::remove(string name, double konz)
 {
 	for (int i = 0; i < len; i++)
 	{
@@ -70,5 +71,10 @@ Medikament Medrepo::remove(string name, double konz)
 		}
 	}
 	return("Invalid target");
+}
+
+Controller Medrepo::control() const
+{
+	return Controller(*this);
 }
 

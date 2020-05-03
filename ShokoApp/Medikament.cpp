@@ -21,22 +21,22 @@ Medikament::~Medikament() {
 	//destructor
 };
 
-string Medikament::set_name(string new_name) {
+void Medikament::set_name(string new_name) {
 	//setter name
 	this->Name = new_name;
 };
 
-double Medikament::set_konz(double new_konz) {
+void Medikament::set_konz(double new_konz) {
 	//setter konzentration
 	this->Konzentration = new_konz;
 };
 
-int Medikament::set_menge(int new_menge) {
+void Medikament::set_menge(int new_menge) {
 	//setter menge
 	this->Menge = new_menge;
 };
 
-double Medikament::set_preis(double new_preis) {
+void Medikament::set_preis(double new_preis) {
 	//setter preis
 	this->Preis = new_preis;
 }

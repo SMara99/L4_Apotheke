@@ -22,7 +22,7 @@ void Apotheke::addMed(Medikament new_med) {
 			temp = i;
 	};
 
-	if (temp = -1)
+	if (temp == -1)
 		this->Medlist.push_back(new_med);
 	else
 		this->Medlist[temp].set_menge(this->Medlist[temp].get_menge() + new_med.get_menge());

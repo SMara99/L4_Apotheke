@@ -13,36 +13,11 @@ Controller::Controller(const Medrepo& m) : mr(m) //allows us to use the previous
 
 void Controller::find(string target)
 {
-	int tval,laux = 0; //target value
+	int laux = 0; //length of the new array
 	Medikament* aux;
 	aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
-
-	for (int i = 0; i < mr.len; i++)
-	{
-		if (target.compare(mr.liste[i].get_name) <= 0)
-		{
-			aux[i] = mr.liste[i];
-			laux++;
-		}
-	}
-
-	//prints the objects inside of the array
-	for (int j = 0; j < laux; j++)
-	{
-		cout << aux[j].get_name() << " " << aux[j].get_konz() << " " << aux[j].get_menge() << " " << aux[j].get_preis() << endl;
-	}
-}
-
-void Controller::lower()
-{
-	int laux = 0; //target value,length of new array
-	string tval;
-	Medikament* aux; 
-	aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
-	cout << "Please input maximal value";
-	cin >> tval;
 	//if the string is empty the original array will be displayed
-	if (tval == "")
+	if (target == " ")
 		for (int j = 0; j < mr.len; j++)
 		{
 			cout << mr.liste[j].get_name() << " " << mr.liste[j].get_konz() << " " << mr.liste[j].get_menge() << " " << mr.liste[j].get_preis() << endl;
@@ -51,23 +26,52 @@ void Controller::lower()
 	{
 		for (int i = 0; i < mr.len; i++)
 		{
-			if (mr.liste[i].get_menge == tval)
+			if (target == mr.liste[i].get_name())
 			{
 				aux[i] = mr.liste[i];
 				laux++;
 			}
 		}
 
+		//prints the objects inside of the array
 		for (int j = 0; j < laux; j++)
 		{
 			cout << aux[j].get_name() << " " << aux[j].get_konz() << " " << aux[j].get_menge() << " " << aux[j].get_preis() << endl;
 		}
 	}
+
+	if (laux == 0)
+		cout << "String not found\n";
+	
 }
+
+void Controller::lower()
+{
+	int laux = 0; //target value,length of new array
+	int tval;
+	Medikament* aux; 
+	aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
+	cout << "Please input maximal value: ";
+	cin >> tval;
+	
+	for (int i = 0; i < mr.len; i++)
+	{
+		if (mr.liste[i].get_menge() <= tval)
+		{
+			aux[laux] = mr.liste[i];
+			laux++;
+		}
+	}
+
+	for (int j = 0; j < laux; j++)
+	{
+		cout << aux[j].get_name() << " " << aux[j].get_konz() << " " << aux[j].get_menge() << " " << aux[j].get_preis() << endl;
+	}
+}
+	
 
 void Controller::psort()
 {
-	int tval;
 	Medikament aux;
 	//sorts the array
 	for (int i = 0; i < mr.len-1; i++)

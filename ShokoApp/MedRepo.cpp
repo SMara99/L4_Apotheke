@@ -32,9 +32,6 @@ Medikament* Medrepo::getlist()
 
 Medikament Medrepo::add(Medikament m)
 {
-
-	int p, aux;
-
 	if (len == cap) //doubles the array's capacity
 	{
 		cap *= 2;
@@ -64,7 +61,7 @@ bool Medrepo::update(string name, double konz, Medikament newmed)
 {
 	for (int i = 0; i < len; i++)
 	{
-		if (liste[i].get_konz == konz && liste[i].get_name == name)
+		if (liste[i].get_konz() == konz && liste[i].get_name() == name)
 		{
 			liste[i] = newmed;
 			return true;
@@ -77,7 +74,7 @@ string Medrepo::remove(string name, double konz)
 {
 	for (int i = 0; i < len; i++)
 	{
-		if (liste[i].get_konz == konz && liste[i].get_name == name)
+		if (liste[i].get_konz() == konz && liste[i].get_name() == name)
 		{
 			for (int j = i; j < len - 1; j++)
 				liste[j] = liste[j + 1];

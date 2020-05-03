@@ -18,10 +18,10 @@ public:
 	~Medikament();
 
 
-	string set_name(string new_name);
-	double set_konz(double new_konz);
-	int set_menge(int new_menge);
-	double set_preis(double new_preis);
+	void set_name(string new_name);
+	void set_konz(double new_konz);
+	void set_menge(int new_menge);
+	void set_preis(double new_preis);
 
 
 	string get_name();

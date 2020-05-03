@@ -15,6 +15,21 @@ Medrepo::Medrepo()
 	liste = new Medikament[cap];
 }
 
+int Medrepo::getlen()
+{
+	return len;
+}
+
+int Medrepo::getcap()
+{
+	return cap;
+}
+
+Medikament* Medrepo::getlist()
+{
+	return liste;
+}
+
 Medikament Medrepo::add(Medikament m)
 {
 
@@ -42,20 +57,20 @@ Medikament Medrepo::add(Medikament m)
 
 	liste[len] = m;
 	len++;
-	return liste[len - 1];
+	return liste[len - 1]; //returns the newly added element;
 }
 
-Medikament Medrepo::update(string name, double konz, Medikament newmed)
+bool Medrepo::update(string name, double konz, Medikament newmed)
 {
 	for (int i = 0; i < len; i++)
 	{
 		if (liste[i].get_konz == konz && liste[i].get_name == name)
 		{
 			liste[i] = newmed;
-			return liste;
+			return true;
 		}
 	}
-	return (newmed);
+	return false;
 }
 
 string Medrepo::remove(string name, double konz)

@@ -142,12 +142,15 @@
     <ClInclude Include="Medcontrol.h" />
     <ClInclude Include="Medikament.h" />
     <ClInclude Include="MedRepo.h" />
+    <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Apotheke.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Medcontrol.cpp" />
     <ClCompile Include="Medikament.cpp" />
     <ClCompile Include="MedRepo.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -29,7 +29,7 @@ void Controller::find(string target)
 	//prints the objects inside of the array
 	for (int j = 0; j < laux; j++)
 	{
-		cout << aux[j].get_name() << aux[j].get_konz() << aux[j].get_menge() << aux[j].get_preis() << endl;
+		cout << aux[j].get_name() << " " << aux[j].get_konz() << " " << aux[j].get_menge() << " " << aux[j].get_preis() << endl;
 	}
 }
 
@@ -39,12 +39,13 @@ void Controller::lower()
 	string tval;
 	Medikament* aux; 
 	aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
+	cout << "Please input maximal value";
 	cin >> tval;
 	//if the string is empty the original array will be displayed
 	if (tval == "")
 		for (int j = 0; j < mr.len; j++)
 		{
-			cout << mr.liste[j].get_name() << mr.liste[j].get_konz() << mr.liste[j].get_menge() << mr.liste[j].get_preis() << endl;
+			cout << mr.liste[j].get_name() << " " << mr.liste[j].get_konz() << " " << mr.liste[j].get_menge() << " " << mr.liste[j].get_preis() << endl;
 		}
 	else
 	{
@@ -59,7 +60,7 @@ void Controller::lower()
 
 		for (int j = 0; j < laux; j++)
 		{
-			cout << aux[j].get_name() << aux[j].get_konz() << aux[j].get_menge() << aux[j].get_preis() << endl;
+			cout << aux[j].get_name() << " " << aux[j].get_konz() << " " << aux[j].get_menge() << " " << aux[j].get_preis() << endl;
 		}
 	}
 }
@@ -82,6 +83,6 @@ void Controller::psort()
 
 	for (int j = 0; j < mr.len; j++)
 	{
-		cout << mr.liste[j].get_name() << mr.liste[j].get_konz() << mr.liste[j].get_menge() << mr.liste[j].get_preis() << endl;
+		cout << mr.liste[j].get_name() << " " << mr.liste[j].get_konz() << " " << mr.liste[j].get_menge() << " " << mr.liste[j].get_preis() << endl;
 	}
 }

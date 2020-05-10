@@ -30,9 +30,11 @@ Medikament* Medrepo::getlist()
 	return liste;
 }
 
-Medikament Medrepo::add(Medikament m)
+vector<Medikament> Medrepo::add(Medikament m)
 {
-	if (len == cap) //doubles the array's capacity
+	bool ok = false;
+	vector<Medikament> aux;
+	if (len == cap) //doubles the array's capacity if needed
 	{
 		cap *= 2;
 		Medikament* aux_pointer = new Medikament[cap];
@@ -42,36 +44,50 @@ Medikament Medrepo::add(Medikament m)
 		delete liste;
 		liste = aux_pointer;
 	}
-
+	
+	//updates an element if it already exists
 	for (int i = 0; i < len; i++)
 	{
 		if (liste[i].get_konz() == m.get_konz() && liste[i].get_name() == m.get_name())
 		{
 			liste[i] = m;
-			return liste[i];
+			ok = true;
 		}
 	}
 
-	liste[len] = m;
-	len++;
-	return liste[len - 1]; //returns the newly added element;
+	//if the object hasn't been found, then it will be added at the end of the array
+	if (ok == false)
+	{
+		liste[len] = m;
+		len++;
+	}
+
+	//creates the new vector
+	for (int j = 0; j < len; j++)
+	{
+		aux.insert(aux.end(), liste[j]);
+	}
+	return aux; //returns new vector
 }
 
-bool Medrepo::update(string name, double konz, Medikament newmed)
+vector<Medikament> Medrepo::update(string name, double konz, Medikament newmed)
 {
+	vector<Medikament> aux;
 	for (int i = 0; i < len; i++)
 	{
 		if (liste[i].get_konz() == konz && liste[i].get_name() == name)
 		{
 			liste[i] = newmed;
-			return true;
 		}
+		aux.insert(aux.end(), liste[i]);
 	}
-	return false;
+
+	return aux;
 }
 
-string Medrepo::remove(string name, double konz)
+vector<Medikament> Medrepo::remove(string name, double konz)
 {
+	vector<Medikament> aux;
 	for (int i = 0; i < len; i++)
 	{
 		if (liste[i].get_konz() == konz && liste[i].get_name() == name)
@@ -79,14 +95,80 @@ string Medrepo::remove(string name, double konz)
 			for (int j = i; j < len - 1; j++)
 				liste[j] = liste[j + 1];
 			len--;
-			return("Removal successful");
+			i--;
 		}
 	}
-	return("Invalid target");
+
+	for (int j = 0; j < len; j++)
+	{
+		aux.insert(aux.end(), liste[j]);
+	}
+
+	return aux;
 }
 
-Controller Medrepo::control() const
+vector<Medikament> Medrepo::FindString(string target)
 {
-	return Controller(*this);
+	int laux = 0; //length of the new array
+	vector<Medikament> aux;
+	//aux = new Medikament[mr.cap]; //creates a new dynamic array which will only contain the objects that fit the given criteria
+
+	//if the string is empty the original array will be displayed
+	if (target == " " || target == "" || target == "\n")
+	{
+		for (int j = 0; j < len; j++)
+		{
+			aux.insert(aux.end(), liste[j]);
+		}
+		return aux;
+	}
+	else
+	{
+		for (int i = 0; i < len; i++)
+		{
+			if (target == liste[i].get_name()) //creates a vector containing only the objects that fir the criteria
+			{
+				aux.insert(aux.end(), liste[i]);
+			}
+		}
+		return aux;
+	}
+}
+
+vector<Medikament> Medrepo::MengeLowerThan(int menge)
+{
+	vector<Medikament> aux;//creates a new vector which will only contain the objects that fit the given criteria
+	for (int i = 0; i < len; i++)
+	{
+		if (liste[i].get_menge() <= menge)
+		{
+			aux.insert(aux.end(), liste[i]);
+		}
+	}
+	return aux;
+}
+
+vector<Medikament> Medrepo::PriceSort()
+{
+	Medikament aux;
+	vector<Medikament> sorted;
+	//sorts the array
+	for (int i = 0; i < len - 1; i++)
+	{
+		for (int j = i + 1; j < len; j++)
+			if (liste[i].get_preis() < liste[j].get_preis())
+			{
+				aux = liste[i];
+				liste[i] = liste[j];
+				liste[j] = aux;
+			}
+	}
+
+	for (int k = 0; k < len; k++)
+	{
+		sorted.insert(sorted.end(), liste[k]); //creates the sorted vector
+	}
+
+	return sorted;
 }
 

@@ -5,11 +5,11 @@
 
 using namespace std;
 
-class Controller; 
+//class Controller; 
 //Medrepo is a dynamic array which stores objects of type Medikament
 class Medrepo
 {
-	friend class Controller;
+	//friend class Controller;
 
 private:
 	Medikament* liste;
@@ -17,19 +17,23 @@ private:
 	int cap;
 
 public:
-	//dconstructor
+	//constructor
 	Medrepo();
-	//returns the length of the array
 	int getlen();
-	//returns the capacity of the array
 	int getcap();
 	Medikament* getlist();
 	//adds a new value to the end of the array, updates it if the item already exists
-	Medikament add(Medikament m);
+	vector<Medikament> add(Medikament m);
 	//updates a specified element; returns true if the operation is successful and false otherwise
-	bool update(string name, double konz, Medikament newmed);
+	vector<Medikament> update(string name, double konz, Medikament newmed);
 	//removes a specified element
-	string remove(string name, double konz);
+	vector<Medikament> remove(string name, double konz);
+	//returns the objects that have a specific string inside of them
+	vector<Medikament> FindString(string target);
+	//returns all objects with a lower menge value than the selected one
+	vector<Medikament> MengeLowerThan(int menge);
+	//sorts the objects in the array by price(descending)
+	vector<Medikament> PriceSort();
 	//links the two classes
-	Controller control() const;
+	//Controller control() const;
 };

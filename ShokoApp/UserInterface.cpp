@@ -9,7 +9,7 @@ using namespace std;
 
 int menu(Medrepo arr)
 {
-	Controller ctr = arr.control();
+	Controller ctr = Controller(arr);
 	int option;
 	bool on = true;
 	while (on != false) {
@@ -21,24 +21,24 @@ int menu(Medrepo arr)
 		cout << " 5) Find string\n";
 		cout << " 6) Find by attribute\n";
 		cout << " 7) Sort by price(descending)\n";
-		cout << " 8) Exit.\n";
+		cout << " 0) Exit.\n";
 		cout << "Columns: name; concentration; menge; price\n";
 		cout << " Enter your choice and press return: ";
 
 		cin >> option;
-		
+
 		cout << endl;
 
 		switch (option)
 		{
 		case 1:
 		{	cout << "Here are the objects\n";
-			
-			for (int i = 0; i < arr.getlen(); i++) //returns all of the elements
-			{
-				cout << arr.getlist()[i].get_name() << " " <<arr.getlist()[i].get_konz() << " " << arr.getlist()[i].get_menge() << " " << arr.getlist()[i].get_preis() << endl;
-			}
-			break;
+
+		for (int i = 0; i < arr.getlen(); i++) //returns all of the elements
+		{
+			cout << arr.getlist()[i].get_name() << " " << arr.getlist()[i].get_konz() << " " << arr.getlist()[i].get_menge() << " " << arr.getlist()[i].get_preis() << endl;
+		}
+		break;
 		}
 		case 2:
 		{
@@ -46,9 +46,7 @@ int menu(Medrepo arr)
 			cout << "Adding item\n";
 			Medikament m;
 			m.set_name("Random");
-			arr.add(m);
-			int i = arr.getlen() - 1; //prints the newly added element
-			cout << arr.getlist()[i].get_name() << " " << arr.getlist()[i].get_konz() << " " << arr.getlist()[i].get_menge() << " " << arr.getlist()[i].get_preis() << endl;
+			ctr.printAdd(m);
 			break;
 		}
 		case 3:
@@ -58,11 +56,7 @@ int menu(Medrepo arr)
 			double k;//konzentration
 			cout << "Please input name, then the concentration: ";
 			cin >> n >> k;
-			arr.remove(n, k);
-			for (int i = 0; i < arr.getlen(); i++) //returns all of the elements
-			{
-				cout << arr.getlist()[i].get_name() << " " << arr.getlist()[i].get_konz() << " " << arr.getlist()[i].get_menge() << " " << arr.getlist()[i].get_preis() << endl;
-			}
+			ctr.printRemove(n, k);
 			break;
 		}
 		case 4:
@@ -77,11 +71,7 @@ int menu(Medrepo arr)
 			double k;//konzentration
 			cout << "Please input name, followed by the concentration: ";
 			cin >> n >> k;
-			arr.update(n, k, aux);
-			for (int i = 0; i < arr.getlen(); i++) //prints all of the elements
-			{
-				cout << arr.getlist()[i].get_name() << " " << arr.getlist()[i].get_konz() << " " << arr.getlist()[i].get_menge() << " " << arr.getlist()[i].get_preis() << endl;
-			}
+			ctr.printUpdate(n, k, aux);
 			break;
 		}
 		case 5:
@@ -90,21 +80,24 @@ int menu(Medrepo arr)
 			string t;
 			cout << "Please input desired string: ";
 			cin >> t;
-			ctr.find(t);
+			ctr.printFindString(t);
 			break;
 		}
 		case 6:
 		{
-			//values lower than
-			ctr.lower();
+			int m;
+			cout << "Please input maximum menge";
+			cin >> m;
+			//values lower than m
+			ctr.printMengeLowerThan(m);
 			break;
 		}
 		case 7:
 		{
-			ctr.psort();
+			ctr.printSorted();
 			break;
 		}
-		case 8:
+		case 0:
 			cout << "End of Program.\n";
 			on = false;
 			break;
